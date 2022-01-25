@@ -4,7 +4,7 @@
 # grep '/ftp/' /etc/passwd | cut -d':' -f1 | xargs -n1 deluser
 
 #Create users
-USERS='user|password|/home/user|1000'
+USERS='user|pass|/home/user|1000'
 #USERS='name1|password1|[folder1][|uid1] name2|password2|[folder2][|uid2]'
 #may be:
 # user|password foo|bar|/home/foo
@@ -35,7 +35,7 @@ for i in $USERS ; do
 
   echo -e "$PASS\n$PASS" | adduser -h $FOLDER -s /sbin/nologin $UID_OPT $NAME
   mkdir -p $FOLDER
-  cp -rv /vat/custom-ftp-data/* $FOLDER
+  cp -rv /var/custom-ftp-data/* $FOLDER
   chown -R $NAME:$NAME $FOLDER
   unset NAME PASS FOLDER UID
 done
